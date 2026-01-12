@@ -21,7 +21,7 @@ export function HeroSection() {
 
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-foreground leading-tight mb-6">
               Everything Your{' '}
-              <span className="text-gradient">Little One</span>{' '}
+              <span className="bg-blue-400 text-white px-2 py-1 rounded">Little One</span>{' '}
               Needs to Bloom
             </h1>
 
