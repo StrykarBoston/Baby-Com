@@ -8,6 +8,8 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import { Separator } from '@/components/ui/separator';
 import { useAuth } from '@/context/FirebaseAuthContext';
+import { Navigation } from '@/components/layout/Navigation';
+import { Footer } from '@/components/layout/Footer';
 
 const FirebaseLoginPage = () => {
   const [email, setEmail] = useState('');
@@ -50,8 +52,10 @@ const FirebaseLoginPage = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-mint-light/50 to-peach-light/50 p-4">
-      <Card className="w-full max-w-md shadow-elevated">
+    <div className="min-h-screen bg-background">
+      <Navigation />
+      <div className="flex items-center justify-center bg-gradient-to-br from-mint-light/50 to-peach-light/50 p-4">
+        <Card className="w-full max-w-md shadow-elevated">
         <CardHeader className="text-center">
           <CardTitle className="text-2xl font-heading font-bold text-foreground">
             Welcome Back
@@ -164,6 +168,8 @@ const FirebaseLoginPage = () => {
         </form>
       </Card>
     </div>
+    <Footer />
+  </div>
   );
 };
 

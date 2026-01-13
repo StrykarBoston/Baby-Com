@@ -5,6 +5,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { CartProvider } from "@/context/CartContext";
 import { FirebaseAuthProvider } from "@/context/FirebaseAuthContext";
+import { WishlistProvider } from "@/context/WishlistContext";
 import FirebaseProtectedRoute from "@/components/auth/FirebaseProtectedRoute";
 import Index from "./pages/Index";
 import ProductsPage from "./pages/ProductsPage";
@@ -13,7 +14,6 @@ import CartPage from "./pages/CartPage";
 import FirebaseProfilePage from "./pages/FirebaseProfilePage";
 import FirebaseLoginPage from "./components/auth/FirebaseLoginPage";
 import FirebaseSignupPage from "./components/auth/FirebaseSignupPage";
-import WishlistPage from "./pages/WishlistPage";
 import CheckoutPage from "./pages/CheckoutPage";
 import AboutPage from "./pages/AboutPage";
 import FAQPage from "./pages/FAQPage";
@@ -30,16 +30,16 @@ const App = () => (
   <QueryClientProvider client={queryClient}>
     <FirebaseAuthProvider>
       <CartProvider>
-        <TooltipProvider>
-          <Toaster />
-          <Sonner />
-          <BrowserRouter>
+        <WishlistProvider>
+          <TooltipProvider>
+            <Toaster />
+            <Sonner />
+            <BrowserRouter>
             <Routes>
               <Route path="/" element={<Index />} />
               <Route path="/products" element={<ProductsPage />} />
               <Route path="/product/:id" element={<ProductDetailPage />} />
               <Route path="/cart" element={<CartPage />} />
-              <Route path="/wishlist" element={<WishlistPage />} />
               <Route path="/checkout" element={<CheckoutPage />} />
               <Route path="/about" element={<AboutPage />} />
               <Route path="/faq" element={<FAQPage />} />
@@ -63,9 +63,10 @@ const App = () => (
             </Routes>
           </BrowserRouter>
         </TooltipProvider>
-      </CartProvider>
-    </FirebaseAuthProvider>
-  </QueryClientProvider>
+      </WishlistProvider>
+    </CartProvider>
+  </FirebaseAuthProvider>
+</QueryClientProvider>
 );
 
 export default App;
