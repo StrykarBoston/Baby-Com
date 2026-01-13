@@ -13,6 +13,15 @@ import CartPage from "./pages/CartPage";
 import FirebaseProfilePage from "./pages/FirebaseProfilePage";
 import FirebaseLoginPage from "./components/auth/FirebaseLoginPage";
 import FirebaseSignupPage from "./components/auth/FirebaseSignupPage";
+import WishlistPage from "./pages/WishlistPage";
+import CheckoutPage from "./pages/CheckoutPage";
+import AboutPage from "./pages/AboutPage";
+import FAQPage from "./pages/FAQPage";
+import ShippingInfoPage from "./pages/ShippingInfoPage";
+import ReturnsPage from "./pages/ReturnsPage";
+import SizeGuidePage from "./pages/SizeGuidePage";
+import ContactPage from "./pages/ContactPage";
+import PrivacyTermsPage from "./pages/PrivacyTermsPage";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -30,6 +39,15 @@ const App = () => (
               <Route path="/products" element={<ProductsPage />} />
               <Route path="/product/:id" element={<ProductDetailPage />} />
               <Route path="/cart" element={<CartPage />} />
+              <Route path="/wishlist" element={<WishlistPage />} />
+              <Route path="/checkout" element={<CheckoutPage />} />
+              <Route path="/about" element={<AboutPage />} />
+              <Route path="/faq" element={<FAQPage />} />
+              <Route path="/shipping" element={<ShippingInfoPage />} />
+              <Route path="/returns" element={<ReturnsPage />} />
+              <Route path="/size-guide" element={<SizeGuidePage />} />
+              <Route path="/contact" element={<ContactPage />} />
+              <Route path="/privacy-terms" element={<PrivacyTermsPage />} />
               <Route path="/login" element={<FirebaseLoginPage />} />
               <Route path="/signup" element={<FirebaseSignupPage />} />
               <Route 

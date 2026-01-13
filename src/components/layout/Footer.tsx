@@ -125,12 +125,12 @@ export function Footer() {
       <div className="border-t border-border">
         <div className="container py-6">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-muted-foreground">
-            <p>© {currentYear} BabyBloom. All rights reserved.</p>
-            <div className="flex flex-wrap justify-center gap-4">
-              <Link to="/privacy" className="hover:text-primary transition-colors">Privacy Policy</Link>
-              <Link to="/terms" className="hover:text-primary transition-colors">Terms of Service</Link>
-              <Link to="/accessibility" className="hover:text-primary transition-colors">Accessibility</Link>
-            </div>
+            <p> {currentYear} BabyBloom. All rights reserved.</p>
+            <ul className="space-y-2 text-sm">
+              <li><Link to="/privacy-terms" className="text-muted-foreground hover:text-primary transition-colors">Privacy Policy</Link></li>
+              <li><Link to="/privacy-terms" className="text-muted-foreground hover:text-primary transition-colors">Terms of Service</Link></li>
+              <li><Link to="/accessibility" className="text-muted-foreground hover:text-primary transition-colors">Accessibility</Link></li>
+            </ul>
           </div>
         </div>
       </div>

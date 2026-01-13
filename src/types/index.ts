@@ -16,6 +16,10 @@ export interface Product {
   ageRange?: string;
   brand?: string;
   features?: string[];
+  addedDate?: string;
+  quantity?: number;
+  size?: string;
+  color?: string;
 }
 
 export interface Category {
