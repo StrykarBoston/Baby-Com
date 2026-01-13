@@ -3,6 +3,7 @@ import { Heart, ShoppingBag, Star } from 'lucide-react';
 import { Product } from '@/types';
 import { Button } from '@/components/ui/button';
 import { useCart } from '@/context/CartContext';
+import { useWishlist } from '@/context/WishlistContext';
 import { cn } from '@/lib/utils';
 
 interface ProductCardProps {
@@ -12,6 +13,7 @@ interface ProductCardProps {
 
 export function ProductCard({ product, className }: ProductCardProps) {
   const { addItem, openCart } = useCart();
+  const { addItem: addToWishlist, isInWishlist } = useWishlist();
 
   const handleAddToCart = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -70,12 +72,15 @@ export function ProductCard({ product, className }: ProductCardProps) {
         <button
           onClick={(e) => {
             e.preventDefault();
-            // TODO: Add to wishlist
+            addToWishlist(product);
           }}
-          className="absolute top-3 right-3 w-9 h-9 rounded-full bg-background/80 backdrop-blur-sm flex items-center justify-center text-muted-foreground hover:text-destructive hover:bg-background transition-all opacity-0 group-hover:opacity-100"
+          className={cn(
+            "absolute top-3 right-3 w-9 h-9 rounded-full bg-background/80 backdrop-blur-sm flex items-center justify-center text-muted-foreground hover:text-destructive hover:bg-background transition-all opacity-0 group-hover:opacity-100",
+            isInWishlist(product.id) && "text-destructive"
+          )}
           aria-label="Add to wishlist"
         >
-          <Heart className="h-4 w-4" />
+          <Heart className={cn("h-4 w-4", isInWishlist(product.id) && "fill-current")} />
         </button>
 
         {/* Quick Add Button */}

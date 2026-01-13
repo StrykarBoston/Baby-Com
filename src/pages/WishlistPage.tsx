@@ -5,77 +5,16 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { useCart } from '@/context/CartContext';
+import { useWishlist } from '@/context/WishlistContext';
 import { Navigation } from '@/components/layout/Navigation';
 import { Footer } from '@/components/layout/Footer';
 import { Product } from '@/types';
 
-// Mock wishlist data
-const wishlistItems: Product[] = [
-  {
-    id: "1",
-    name: "Organic Cotton Baby Onesie",
-    description: "Soft and breathable organic cotton onesie perfect for everyday wear",
-    price: 24.99,
-    originalPrice: 34.99,
-    image: "https://images.unsplash.com/photo-1573403271145-392a1e1d2a1d?w=300&h=300&fit=crop",
-    rating: 4.5,
-    reviewCount: 128,
-    inStock: true,
-    category: "Clothing",
-    size: "6-9 months",
-    color: "Pink",
-    addedDate: "2024-01-15"
-  },
-  {
-    id: "2",
-    name: "Bamboo Baby Swaddle Set",
-    description: "Ultra-soft bamboo swaddle set that keeps baby cozy and secure",
-    price: 45.99,
-    originalPrice: 59.99,
-    image: "https://images.unsplash.com/photo-1544967916-806393e5e5a0?w=300&h=300&fit=crop",
-    rating: 4.8,
-    reviewCount: 89,
-    inStock: true,
-    category: "Bedding",
-    size: "One Size",
-    color: "Beige",
-    addedDate: "2024-01-10"
-  },
-  {
-    id: "3",
-    name: "Silicone Baby Feeding Set",
-    description: "Complete feeding set with BPA-free silicone bottles and soft spoons",
-    price: 32.99,
-    originalPrice: 42.99,
-    image: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=300&h=300&fit=crop",
-    rating: 4.3,
-    reviewCount: 67,
-    inStock: false,
-    category: "Feeding",
-    size: "Standard",
-    color: "Blue",
-    addedDate: "2024-01-08"
-  },
-  {
-    id: "4",
-    name: "Wooden Baby Gym",
-    description: "Developmental wooden gym with hanging toys and activities",
-    price: 89.99,
-    originalPrice: 119.99,
-    image: "https://images.unsplash.com/photo-1582720382175-3f5c8b7b5b7c?w=300&h=300&fit=crop",
-    rating: 4.7,
-    reviewCount: 203,
-    inStock: true,
-    category: "Toys",
-    size: "Multi-age",
-    color: "Natural Wood",
-    addedDate: "2024-01-05"
-  }
-];
 
 const WishlistPage = () => {
   const [selectedItems, setSelectedItems] = useState<string[]>([]);
-  const { addItem } = useCart();
+  const { items: wishlistItems, addItem: addToWishlist, removeItem: removeFromWishlist, isInWishlist } = useWishlist();
+  const { addItem: addToCart } = useCart();
 
   const handleSelectAll = () => {
     if (selectedItems.length === wishlistItems.length) {
@@ -86,12 +25,11 @@ const WishlistPage = () => {
   };
 
   const handleRemoveItem = (id: string) => {
-    // In real app, this would remove from backend
-    console.log('Remove item:', id);
+    removeFromWishlist(id);
   };
 
   const handleAddToCart = (item: Product) => {
-    addItem(item);
+    addToCart(item);
   };
 
   const handleAddSelectedToCart = () => {
@@ -99,7 +37,7 @@ const WishlistPage = () => {
       selectedItems.includes(item.id)
     );
     selectedWishlistItems.forEach(item => {
-      addItem(item);
+      addToCart(item);
     });
     setSelectedItems([]);
   };
