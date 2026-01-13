@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { Search, ShoppingBag, Heart, User, Menu, X, Baby, LogOut } from 'lucide-react';
+import { Search, ShoppingBag, Heart, User, Menu, X, Baby } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useCart } from '@/context/CartContext';
 import { useAuth } from '@/context/FirebaseAuthContext';
@@ -10,15 +10,8 @@ export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const { itemCount, openCart } = useCart();
-  const { user, signOutUser, loading } = useAuth();
+  const { user, loading } = useAuth();
   const navigate = useNavigate();
-
-  const handleSignOut = async () => {
-    const result = await signOutUser();
-    if (!result.error) {
-      navigate('/');
-    }
-  };
 
   const navLinks = [
     { name: 'Shop All', href: '/products' },
@@ -101,15 +94,6 @@ export function Header() {
                 >
                   <User className="h-5 w-5" />
                 </Link>
-                <Button
-                  variant="ghost"
-                  size="sm"
-                  onClick={handleSignOut}
-                  className="p-2 rounded-lg text-muted-foreground hover:text-foreground hover:bg-accent transition-colors"
-                  aria-label="Sign Out"
-                >
-                  <LogOut className="h-5 w-5" />
-                </Button>
               </div>
             ) : (
               <div className="hidden sm:flex items-center gap-1">
@@ -192,12 +176,6 @@ export function Header() {
                 <Link to="/profile" className="flex items-center gap-2 text-muted-foreground">
                   <User className="h-5 w-5" /> Profile
                 </Link>
-                <button
-                  onClick={handleSignOut}
-                  className="flex items-center gap-2 text-muted-foreground hover:text-foreground"
-                >
-                  <LogOut className="h-5 w-5" /> Sign Out
-                </button>
               </>
             ) : (
               <>

@@ -12,7 +12,7 @@ export function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const { itemCount, openCart } = useCart();
-  const { user, loading, signOutUser } = useAuth();
+  const { user, loading } = useAuth();
   const location = useLocation();
 
   const navLinks = [
@@ -29,13 +29,6 @@ export function Navigation() {
       return location.pathname === '/products';
     }
     return location.pathname.startsWith(href.split('?')[0]);
-  };
-
-  const handleSignOut = async () => {
-    const result = await signOutUser();
-    if (!result.error) {
-      window.location.href = '/';
-    }
   };
 
   return (
@@ -111,17 +104,6 @@ export function Navigation() {
                 >
                   <User className="h-5 w-5" />
                 </Link>
-                <Button
-                  variant="ghost"
-                  size="sm"
-                  onClick={handleSignOut}
-                  className="p-2 rounded-lg text-muted-foreground hover:text-foreground hover:bg-accent transition-colors"
-                  aria-label="Sign Out"
-                >
-                  <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 16l4-4m0 0l-4 4m4 4H7m4 4v-6a4 4 0 01-4-4H7a4 4 0 01-4 4v6a4 4 0 014 4h10a4 4 0 014-4v6a4 4 0 01-4-4z" />
-                  </svg>
-                </Button>
               </div>
             ) : (
               <div className="hidden sm:flex items-center gap-1">
@@ -205,15 +187,6 @@ export function Navigation() {
                 <Link to="/profile" className="flex items-center gap-2 text-muted-foreground">
                   <User className="h-5 w-5" /> Profile
                 </Link>
-                <button
-                  onClick={handleSignOut}
-                  className="flex items-center gap-2 text-muted-foreground hover:text-foreground"
-                >
-                  <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 16l4-4m0 0l-4 4m4 4H7m4 4v-6a4 4 0 01-4-4H7a4 4 0 01-4 4v6a4 4 0 014 4h10a4 4 0 014-4v6a4 4 0 01-4-4z" />
-                  </svg>
-                  Sign Out
-                </button>
               </>
             ) : (
               <>
