@@ -73,6 +73,7 @@ const mockCartItems = [
 
 const CheckoutPage = () => {
   const navigate = useNavigate();
+  const { user } = useAuth();
   const [cartItems, setCartItems] = useState(mockCartItems);
   const [shippingMethod, setShippingMethod] = useState('standard');
   const [paymentMethod, setPaymentMethod] = useState('card');
@@ -131,13 +132,13 @@ const CheckoutPage = () => {
   const handleCheckout = async (e: React.FormEvent) => {
     e.preventDefault();
     
+    // Show loading state
+    const submitButton = e.currentTarget as HTMLButtonElement;
+    const originalText = submitButton.innerHTML;
+    submitButton.innerHTML = '<div class="animate-spin rounded-full h-4 w-4 border-2 border-primary border-t-transparent inline-block mr-2"></div> Processing...';
+    submitButton.disabled = true;
+    
     try {
-      // Show loading state
-      const submitButton = e.currentTarget as HTMLButtonElement;
-      const originalText = submitButton.innerHTML;
-      submitButton.innerHTML = '<div class="animate-spin rounded-full h-4 w-4 border-2 border-primary border-t-transparent inline-block mr-2"></div> Processing...';
-      submitButton.disabled = true;
-      
       // Prepare order data
       const orderRequest: OrderRequest = {
         items: cartItems.map(item => ({
@@ -196,7 +197,6 @@ const CheckoutPage = () => {
       alert('An error occurred while processing your order. Please try again.');
     } finally {
       // Restore button state
-      const submitButton = e.currentTarget as HTMLButtonElement;
       if (submitButton) {
         submitButton.innerHTML = originalText || 'Place Order';
         submitButton.disabled = false;
