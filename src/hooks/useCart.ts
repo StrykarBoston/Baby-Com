@@ -8,3 +8,5 @@ export function useCart() {
   }
   return context;
 }
+
+export { CartContext };
