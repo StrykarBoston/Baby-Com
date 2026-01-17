@@ -8,6 +8,7 @@ import { Badge } from '@/components/ui/badge';
 import { Separator } from '@/components/ui/separator';
 import { useCart } from '@/hooks/useCart';
 import { useAuth } from '@/context/FirebaseAuthContext';
+import { formatINR } from '@/utils/currency';
 
 interface OrderItem {
   id: string;
@@ -98,20 +99,20 @@ const OrderConfirmationPage = () => {
         tax: 6.80,
         total: 91.77,
         shippingAddress: {
-          name: user?.displayName || 'John Doe',
-          street: '123 Baby Lane',
-          city: 'San Francisco',
-          state: 'CA',
-          zip: '94102',
-          country: 'United States'
+          name: user?.displayName || 'Rahul Sharma',
+          street: '123, MG Road',
+          city: 'Bangalore',
+          state: 'Karnataka',
+          zip: '560001',
+          country: 'India'
         },
         billingAddress: {
-          name: user?.displayName || 'John Doe',
-          street: '123 Baby Lane',
-          city: 'San Francisco',
-          state: 'CA',
-          zip: '94102',
-          country: 'United States'
+          name: user?.displayName || 'Rahul Sharma',
+          street: '123, MG Road',
+          city: 'Bangalore',
+          state: 'Karnataka',
+          zip: '560001',
+          country: 'India'
         },
         paymentMethod: {
           type: 'card',
@@ -119,7 +120,7 @@ const OrderConfirmationPage = () => {
           brand: 'Visa'
         },
         createdAt: new Date().toISOString(),
-        estimatedDelivery: '2024-01-25',
+        estimatedDelivery: new Date(Date.now() + 5 * 24 * 60 * 60 * 1000).toISOString().split('T')[0], // 5 days from now
         trackingNumber: '1Z999AA1234567890'
       };
       
@@ -251,7 +252,7 @@ const OrderConfirmationPage = () => {
                         {item.color && ` • Color: ${item.color}`}
                       </p>
                       <p className="text-sm text-muted-foreground">Qty: {item.quantity}</p>
-                      <p className="font-semibold text-primary">${item.price.toFixed(2)}</p>
+                      <p className="font-semibold text-primary">{formatINR(item.price)}</p>
                     </div>
                   </div>
                 ))}
@@ -267,22 +268,22 @@ const OrderConfirmationPage = () => {
             <CardContent className="p-6 space-y-3">
               <div className="flex justify-between text-sm">
                 <span className="text-muted-foreground">Subtotal</span>
-                <span className="font-medium">${order.subtotal.toFixed(2)}</span>
+                <span className="font-medium">{formatINR(order.subtotal)}</span>
               </div>
               <div className="flex justify-between text-sm">
                 <span className="text-muted-foreground">Shipping</span>
                 <span className="font-medium">
-                  {order.shipping === 0 ? 'FREE' : `$${order.shipping.toFixed(2)}`}
+                  {order.shipping === 0 ? 'FREE' : formatINR(order.shipping)}
                 </span>
               </div>
               <div className="flex justify-between text-sm">
                 <span className="text-muted-foreground">Tax</span>
-                <span className="font-medium">${order.tax.toFixed(2)}</span>
+                <span className="font-medium">{formatINR(order.tax)}</span>
               </div>
               <Separator />
               <div className="flex justify-between text-lg font-bold">
                 <span className="text-foreground">Total</span>
-                <span className="text-primary">${order.total.toFixed(2)}</span>
+                <span className="text-primary">{formatINR(order.total)}</span>
               </div>
             </CardContent>
           </Card>

@@ -97,7 +97,7 @@ export function Header() {
                 </Link>
               </div>
             ) : (
-              <div className="hidden sm:flex items-center gap-1">
+              <div className="flex items-center gap-1">
                 <Link
                   to="/login"
                   className="px-2 lg:px-3 py-1.5 rounded-lg text-muted-foreground hover:text-foreground hover:bg-accent transition-colors text-xs sm:text-sm font-medium touch-manipulation"
