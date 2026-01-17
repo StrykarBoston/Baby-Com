@@ -224,9 +224,9 @@ const ShippingInfoPage = () => {
                         Step {step.step}
                       </div>
                       <h3 className="font-semibold mb-2">{step.title}</h3>
-                      <p className="text-sm text-muted-foreground mb-2">
+                      <div className="text-sm text-muted-foreground mb-2">
                         {step.description}
-                      </p>
+                      </div>
                       <Badge variant="outline">{step.time}</Badge>
                     </CardContent>
                   </Card>
