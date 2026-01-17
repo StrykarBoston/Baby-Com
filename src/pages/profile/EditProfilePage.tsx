@@ -8,8 +8,7 @@ import { Label } from '@/components/ui/label';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Separator } from '@/components/ui/separator';
 import { useAuth } from '@/context/FirebaseAuthContext';
-import { Navigation } from '@/components/layout/Navigation';
-import { Footer } from '@/components/layout/Footer';
+import { Layout } from '@/components/layout/Layout';
 
 const EditProfilePage = () => {
   const { user, updateUserProfile } = useAuth();
@@ -47,8 +46,7 @@ const EditProfilePage = () => {
     .slice(0, 2) || 'U';
 
   return (
-    <div className="min-h-screen bg-background">
-      <Navigation />
+    <Layout>
       <div className="container py-8">
         <div className="max-w-2xl mx-auto">
           {/* Header */}
@@ -147,8 +145,7 @@ const EditProfilePage = () => {
           </Card>
         </div>
       </div>
-      <Footer />
-    </div>
+    </Layout>
   );
 };
 

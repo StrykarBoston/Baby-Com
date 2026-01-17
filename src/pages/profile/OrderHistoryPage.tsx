@@ -7,8 +7,7 @@ import { Input } from '@/components/ui/input';
 import { Badge } from '@/components/ui/badge';
 import { Separator } from '@/components/ui/separator';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { Navigation } from '@/components/layout/Navigation';
-import { Footer } from '@/components/layout/Footer';
+import { Layout } from '@/components/layout/Layout';
 
 interface Order {
   id: string;
@@ -102,8 +101,7 @@ const OrderHistoryPage = () => {
   });
 
   return (
-    <div className="min-h-screen bg-background">
-      <Navigation />
+    <Layout>
       <div className="container py-8">
         <div className="max-w-6xl mx-auto">
           {/* Header */}
@@ -258,8 +256,7 @@ const OrderHistoryPage = () => {
           )}
         </div>
       </div>
-      <Footer />
-    </div>
+    </Layout>
   );
 };
 

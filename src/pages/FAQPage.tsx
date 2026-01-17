@@ -11,8 +11,7 @@ import { Separator } from '@/components/ui/separator';
 import { Badge } from '@/components/ui/badge';
 import { useCart } from '@/hooks/useCart';
 import { useAuth } from '@/context/FirebaseAuthContext';
-import { Navigation } from '@/components/layout/Navigation';
-import { Footer } from '@/components/layout/Footer';
+import { Layout } from '@/components/layout/Layout';
 import { Product } from '@/types';
 
 const FAQPage = () => {
@@ -161,8 +160,7 @@ const FAQPage = () => {
   })).filter(category => category.questions.length > 0);
 
   return (
-    <div className="min-h-screen bg-background">
-      <Navigation />
+    <Layout>
       {/* Header */}
       <div className="bg-gradient-to-br from-mint-light/30 to-peach-light/30 py-16">
         <div className="container">
@@ -296,8 +294,7 @@ const FAQPage = () => {
           </div>
         </div>
       </div>
-      <Footer />
-    </div>
+    </Layout>
   );
 };
 

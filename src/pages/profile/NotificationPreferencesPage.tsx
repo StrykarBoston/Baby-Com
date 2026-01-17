@@ -6,8 +6,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Switch } from '@/components/ui/switch';
 import { Label } from '@/components/ui/label';
 import { Separator } from '@/components/ui/separator';
-import { Navigation } from '@/components/layout/Navigation';
-import { Footer } from '@/components/layout/Footer';
+import { Layout } from '@/components/layout/Layout';
 
 const NotificationPreferencesPage = () => {
   const navigate = useNavigate();
@@ -56,8 +55,7 @@ const NotificationPreferencesPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background">
-      <Navigation />
+    <Layout>
       <div className="container py-8">
         <div className="max-w-2xl mx-auto">
           {/* Header */}
@@ -218,8 +216,7 @@ const NotificationPreferencesPage = () => {
           </Card>
         </div>
       </div>
-      <Footer />
-    </div>
+    </Layout>
   );
 };
 

@@ -48,121 +48,125 @@ const App = () => (
             <Toaster />
             <Sonner />
             <BrowserRouter>
-            <Routes>
-              <Route path="/" element={<Index />} />
-              <Route path="/products" element={<ProductsPage />} />
-              <Route path="/product/:id" element={<ProductDetailPage />} />
-              <Route path="/cart" element={<CartPage />} />
-              <Route path="/wishlist" element={<WishlistPage />} />
-              <Route path="/checkout" element={<CheckoutPage />} />
-              <Route path="/about" element={<AboutPage />} />
-              <Route path="/faq" element={<FAQPage />} />
-              <Route path="/shipping" element={<ShippingInfoPage />} />
-              <Route path="/returns" element={<ReturnsPage />} />
-              <Route path="/size-guide" element={<SizeGuidePage />} />
-              <Route path="/contact" element={<ContactPage />} />
-              <Route path="/blog" element={<BlogPage />} />
-              <Route path="/blog/:slug" element={<BlogDetailPage />} />
-              <Route path="/privacy-terms" element={<PrivacyTermsPage />} />
-              <Route path="/login" element={<FirebaseLoginPage />} />
-              <Route path="/signup" element={<FirebaseSignupPage />} />
-              <Route 
-                path="/profile" 
-                element={
-                  <FirebaseProtectedRoute>
-                    <FirebaseProfilePage />
-                  </FirebaseProtectedRoute>
-                } 
-              />
-              <Route 
-                path="/profile/edit" 
-                element={
-                  <FirebaseProtectedRoute>
-                    <EditProfilePage />
-                  </FirebaseProtectedRoute>
-                } 
-              />
-              <Route 
-                path="/profile/notifications" 
-                element={
-                  <FirebaseProtectedRoute>
-                    <NotificationPreferencesPage />
-                  </FirebaseProtectedRoute>
-                } 
-              />
-              <Route 
-                path="/profile/privacy" 
-                element={
-                  <FirebaseProtectedRoute>
-                    <PrivacySecurityPage />
-                  </FirebaseProtectedRoute>
-                } 
-              />
-              <Route 
-                path="/profile/orders" 
-                element={
-                  <FirebaseProtectedRoute>
-                    <OrderHistoryPage />
-                  </FirebaseProtectedRoute>
-                } 
-              />
-              <Route 
-                path="/profile/addresses" 
-                element={
-                  <FirebaseProtectedRoute>
-                    <ShippingAddressesPage />
-                  </FirebaseProtectedRoute>
-                } 
-              />
-              <Route 
-                path="/profile/payment" 
-                element={
-                  <FirebaseProtectedRoute>
-                    <PaymentMethodsPage />
-                  </FirebaseProtectedRoute>
-                } 
-              />
-              <Route 
-                path="/profile/gift-cards" 
-                element={
-                  <FirebaseProtectedRoute>
-                    <GiftCardsPage />
-                  </FirebaseProtectedRoute>
-                } 
-              />
-              <Route 
-                path="/profile/rewards" 
-                element={
-                  <FirebaseProtectedRoute>
-                    <WelcomeRewardsPage />
-                  </FirebaseProtectedRoute>
-                } 
-              />
-              <Route 
-                path="/profile/support" 
-                element={
-                  <FirebaseProtectedRoute>
-                    <SupportPage />
-                  </FirebaseProtectedRoute>
-                } 
-              />
-              <Route 
-                path="/order-confirmation/:orderId" 
-                element={
-                  <FirebaseProtectedRoute>
-                    <OrderConfirmationPage />
-                  </FirebaseProtectedRoute>
-                } 
-              />
-              {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-              <Route path="*" element={<NotFound />} />
-            </Routes>
-          </BrowserRouter>
-        </TooltipProvider>
-      </WishlistProvider>
-    </CartProvider>
-  </FirebaseAuthProvider>
-</QueryClientProvider>
+              <div className="min-h-screen bg-background">
+                <main>
+                  <Routes>
+                  <Route path="/" element={<Index />} />
+                  <Route path="/products" element={<ProductsPage />} />
+                  <Route path="/product/:id" element={<ProductDetailPage />} />
+                  <Route path="/cart" element={<CartPage />} />
+                  <Route path="/wishlist" element={<WishlistPage />} />
+                  <Route path="/checkout" element={<CheckoutPage />} />
+                  <Route path="/about" element={<AboutPage />} />
+                  <Route path="/faq" element={<FAQPage />} />
+                  <Route path="/shipping" element={<ShippingInfoPage />} />
+                  <Route path="/returns" element={<ReturnsPage />} />
+                  <Route path="/size-guide" element={<SizeGuidePage />} />
+                  <Route path="/contact" element={<ContactPage />} />
+                  <Route path="/blog" element={<BlogPage />} />
+                  <Route path="/blog/:slug" element={<BlogDetailPage />} />
+                  <Route path="/privacy-terms" element={<PrivacyTermsPage />} />
+                  <Route path="/login" element={<FirebaseLoginPage />} />
+                  <Route path="/signup" element={<FirebaseSignupPage />} />
+                  <Route 
+                    path="/profile" 
+                    element={
+                      <FirebaseProtectedRoute>
+                        <FirebaseProfilePage />
+                      </FirebaseProtectedRoute>
+                    } 
+                  />
+                  <Route 
+                    path="/profile/edit" 
+                    element={
+                      <FirebaseProtectedRoute>
+                        <EditProfilePage />
+                      </FirebaseProtectedRoute>
+                    } 
+                  />
+                  <Route 
+                    path="/profile/notifications" 
+                    element={
+                      <FirebaseProtectedRoute>
+                        <NotificationPreferencesPage />
+                      </FirebaseProtectedRoute>
+                    } 
+                  />
+                  <Route 
+                    path="/profile/privacy" 
+                    element={
+                      <FirebaseProtectedRoute>
+                        <PrivacySecurityPage />
+                      </FirebaseProtectedRoute>
+                    } 
+                  />
+                  <Route 
+                    path="/profile/orders" 
+                    element={
+                      <FirebaseProtectedRoute>
+                        <OrderHistoryPage />
+                      </FirebaseProtectedRoute>
+                    } 
+                  />
+                  <Route 
+                    path="/profile/addresses" 
+                    element={
+                      <FirebaseProtectedRoute>
+                        <ShippingAddressesPage />
+                      </FirebaseProtectedRoute>
+                    } 
+                  />
+                  <Route 
+                    path="/profile/payment" 
+                    element={
+                      <FirebaseProtectedRoute>
+                        <PaymentMethodsPage />
+                      </FirebaseProtectedRoute>
+                    } 
+                  />
+                  <Route 
+                    path="/profile/gift-cards" 
+                    element={
+                      <FirebaseProtectedRoute>
+                        <GiftCardsPage />
+                      </FirebaseProtectedRoute>
+                    } 
+                  />
+                  <Route 
+                    path="/profile/rewards" 
+                    element={
+                      <FirebaseProtectedRoute>
+                        <WelcomeRewardsPage />
+                      </FirebaseProtectedRoute>
+                    } 
+                  />
+                  <Route 
+                    path="/profile/support" 
+                    element={
+                      <FirebaseProtectedRoute>
+                        <SupportPage />
+                      </FirebaseProtectedRoute>
+                    } 
+                  />
+                  <Route 
+                    path="/order-confirmation/:orderId" 
+                    element={
+                      <FirebaseProtectedRoute>
+                        <OrderConfirmationPage />
+                      </FirebaseProtectedRoute>
+                    } 
+                  />
+                  {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+                  <Route path="*" element={<NotFound />} />
+                </Routes>
+                </main>
+              </div>
+            </BrowserRouter>
+          </TooltipProvider>
+        </WishlistProvider>
+      </CartProvider>
+    </FirebaseAuthProvider>
+  </QueryClientProvider>
 );
 
 export default App;

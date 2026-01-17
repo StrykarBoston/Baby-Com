@@ -6,8 +6,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { useCart } from '@/hooks/useCart';
 import { useAuth } from '@/context/FirebaseAuthContext';
-import { Navigation } from '@/components/layout/Navigation';
-import { Footer } from '@/components/layout/Footer';
+import { Layout } from '@/components/layout/Layout';
 import { Product } from '@/types';
 
 const AboutPage = () => {
@@ -61,8 +60,7 @@ const AboutPage = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-background">
-      <Navigation />
+    <Layout>
       {/* Hero Section */}
       <div className="bg-gradient-to-br from-mint-light/30 to-peach-light/30 py-16">
         <div className="container">
@@ -253,8 +251,7 @@ const AboutPage = () => {
           </div>
         </div>
       </div>
-      <Footer />
-    </div>
+    </Layout>
   );
 };
 

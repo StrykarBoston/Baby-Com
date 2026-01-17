@@ -1,13 +1,12 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Heart, ShoppingBag, Trash2, Star, ArrowRight } from 'lucide-react';
+import { Layout } from '@/components/layout/Layout';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { useCart } from '@/hooks/useCart';
 import { useWishlist } from '@/context/WishlistContext';
-import { Navigation } from '@/components/layout/Navigation';
-import { Footer } from '@/components/layout/Footer';
 import { formatINR } from '@/utils/currency';
 import { Product } from '@/types';
 
@@ -44,8 +43,7 @@ const WishlistPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background">
-      <Navigation />
+    <Layout>
       <div className="container py-8">
         {/* Header */}
         <div className="mb-8">
@@ -210,8 +208,7 @@ const WishlistPage = () => {
           </>
         )}
       </div>
-      <Footer />
-    </div>
+    </Layout>
   );
 };
 

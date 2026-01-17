@@ -10,8 +10,7 @@ import { Badge } from '@/components/ui/badge';
 import { Separator } from '@/components/ui/separator';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
-import { Navigation } from '@/components/layout/Navigation';
-import { Footer } from '@/components/layout/Footer';
+import { Layout } from '@/components/layout/Layout';
 
 interface FAQ {
   id: string;
@@ -191,8 +190,7 @@ const SupportPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background">
-      <Navigation />
+    <Layout>
       <div className="container py-8">
         <div className="max-w-6xl mx-auto">
           {/* Header */}
@@ -433,8 +431,7 @@ const SupportPage = () => {
           </div>
         </div>
       </div>
-      <Footer />
-    </div>
+    </Layout>
   );
 };
 

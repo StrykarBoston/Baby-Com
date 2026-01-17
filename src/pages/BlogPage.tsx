@@ -1,6 +1,7 @@
 import { useState, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import { Calendar, Clock, User, Tag, Search, Filter, ChevronRight, Heart, MessageCircle, Share2 } from 'lucide-react';
+import { Layout } from '@/components/layout/Layout';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
@@ -43,7 +44,7 @@ export default function BlogPage() {
   const recentPosts = blogPosts.slice(1, 4);
 
   return (
-    <div className="min-h-screen bg-background">
+    <Layout>
       {/* Hero Section */}
       <section className="bg-gradient-to-br from-primary/5 to-accent/5 py-12 sm:py-16 md:py-20 lg:py-24">
         <div className="container">
@@ -399,6 +400,6 @@ export default function BlogPage() {
           </div>
         </div>
       </section>
-    </div>
+    </Layout>
   );
 }

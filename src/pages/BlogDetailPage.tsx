@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { Calendar, Clock, User, Tag, ChevronLeft, ChevronRight, Heart, MessageCircle, Share2, Facebook, Twitter, Linkedin, Bookmark } from 'lucide-react';
+import { Layout } from '@/components/layout/Layout';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent } from '@/components/ui/card';
@@ -70,7 +71,7 @@ export default function BlogDetailPage() {
   const nextPost = getNextPost();
 
   return (
-    <div className="min-h-screen bg-background">
+    <Layout>
       {/* Hero Image */}
       <div className="relative h-96 md:h-[500px] overflow-hidden">
         <img
@@ -391,6 +392,6 @@ export default function BlogDetailPage() {
           </div>
         </div>
       </section>
-    </div>
+    </Layout>
   );
 }

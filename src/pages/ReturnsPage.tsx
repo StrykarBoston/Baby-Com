@@ -7,8 +7,7 @@ import { Label } from '@/components/ui/label';
 import { Separator } from '@/components/ui/separator';
 import { Badge } from '@/components/ui/badge';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
-import { Navigation } from '@/components/layout/Navigation';
-import { Footer } from '@/components/layout/Footer';
+import { Layout } from '@/components/layout/Layout';
 
 const ReturnsPage = () => {
   const [returnReason, setReturnReason] = useState('');
@@ -97,8 +96,7 @@ const ReturnsPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background">
-      <Navigation />
+    <Layout>
       {/* Header */}
       <div className="bg-gradient-to-br from-mint-light/30 to-peach-light/30 py-16">
         <div className="container">
@@ -363,8 +361,7 @@ const ReturnsPage = () => {
           </div>
         </div>
       </div>
-      <Footer />
-    </div>
+    </Layout>
   );
 };
 

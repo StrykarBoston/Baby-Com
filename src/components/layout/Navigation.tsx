@@ -15,22 +15,6 @@ export function Navigation() {
   const { user, loading } = useAuth();
   const location = useLocation();
 
-  const navLinks = [
-    { name: 'Shop All', href: '/products' },
-    { name: 'Clothing', href: '/products?category=clothing' },
-    { name: 'Diapers', href: '/products?category=diapers' },
-    { name: 'Toys', href: '/products?category=toys' },
-    { name: 'Baby Care', href: '/products?category=care' },
-    { name: 'Sale', href: '/products?sale=true' }
-  ];
-
-  const isActiveLink = (href: string) => {
-    if (href === '/products') {
-      return location.pathname === '/products';
-    }
-    return location.pathname.startsWith(href.split('?')[0]);
-  };
-
   return (
     <header className="sticky top-0 z-50 glass border-b border-border/50">
       {/* Top banner */}
@@ -50,32 +34,14 @@ export function Navigation() {
           </button>
 
           {/* Logo */}
-          <Link to="/" className="flex items-center gap-2 group">
+          <Link to="/" className="flex items-center gap-2">
             <div className="w-10 h-10 rounded-xl bg-primary flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
               <Baby className="h-6 w-6 text-primary-foreground" />
             </div>
             <span className="text-xl md:text-2xl font-heading font-bold text-foreground">
-              Little Sprout Shop
+              BabyBloom
             </span>
           </Link>
-
-          {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-1">
-            {navLinks.map((link) => (
-              <Link
-                key={link.name}
-                to={link.href}
-                className={cn(
-                  "px-4 py-2 text-sm font-medium rounded-lg transition-colors",
-                  "text-muted-foreground hover:text-foreground hover:bg-accent",
-                  isActiveLink(link.href) && "text-primary bg-primary/10",
-                  link.name === 'Sale' && "text-destructive hover:text-destructive"
-                )}
-              >
-                {link.name}
-              </Link>
-            ))}
-          </nav>
 
           {/* Right actions */}
           <div className="flex items-center gap-1">
@@ -153,53 +119,34 @@ export function Navigation() {
             />
           </div>
         </div>
-      </div>
 
-      {/* Mobile Navigation */}
-      <div
-        className={cn(
-          "md:hidden overflow-hidden transition-all duration-300 bg-background border-t border-border",
-          isMenuOpen ? "max-h-96" : "max-h-0"
-        )}
-      >
-        <nav className="container py-4 flex flex-col gap-1">
-          {navLinks.map((link) => (
-            <Link
-              key={link.name}
-              to={link.href}
-              onClick={() => setIsMenuOpen(false)}
-              className={cn(
-                "px-4 py-3 text-base font-medium rounded-lg transition-colors",
-                "text-foreground hover:bg-accent",
-                isActiveLink(link.href) && "text-primary bg-primary/10",
-                link.name === 'Sale' && "text-destructive hover:text-destructive"
-              )}
-            >
-              {link.name}
-            </Link>
-          ))}
-          <div className="flex gap-4 mt-4 px-4">
+        {/* Mobile Navigation */}
+        <div
+          className={cn(
+            "md:hidden overflow-hidden transition-all duration-300 bg-background border-t border-border",
+            isMenuOpen ? "max-h-96" : "max-h-0"
+          )}
+        >
+          <nav className="container py-4 flex flex-col gap-1">
             <Link to="/wishlist" className="flex items-center gap-2 text-muted-foreground">
               <Heart className="h-5 w-5" /> Wishlist
             </Link>
             {!loading && user ? (
-              <>
-                <Link to="/profile" className="flex items-center gap-2 text-muted-foreground">
-                  <User className="h-5 w-5" /> Profile
-                </Link>
-              </>
+              <Link to="/profile" className="flex items-center gap-2 text-muted-foreground">
+                <User className="h-5 w-5" /> Profile
+              </Link>
             ) : (
-              <>
+              <div className="flex items-center gap-2">
                 <Link to="/login" className="flex items-center gap-2 text-muted-foreground">
                   <User className="h-5 w-5" /> Sign In
                 </Link>
                 <Link to="/signup" className="flex items-center gap-2 text-primary font-medium">
                   Sign Up
                 </Link>
-              </>
+              </div>
             )}
-          </div>
-        </nav>
+          </nav>
+        </div>
       </div>
     </header>
   );

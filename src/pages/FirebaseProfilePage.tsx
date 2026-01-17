@@ -9,8 +9,7 @@ import { Separator } from '@/components/ui/separator';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { useAuth } from '@/context/FirebaseAuthContext';
-import { Navigation } from '@/components/layout/Navigation';
-import { Footer } from '@/components/layout/Footer';
+import { Layout } from '@/components/layout/Layout';
 
 const FirebaseProfilePage = () => {
   const { user, signOutUser, updateUserProfile } = useAuth();
@@ -39,16 +38,14 @@ const FirebaseProfilePage = () => {
 
   if (!user) {
     return (
-      <div className="min-h-screen bg-background">
-        <Navigation />
+      <Layout>
         <div className="flex items-center justify-center py-20">
           <div className="text-center">
             <h1 className="text-2xl font-bold mb-4">Please sign in to view your profile</h1>
             <Button onClick={() => navigate('/login')}>Sign In</Button>
           </div>
         </div>
-        <Footer />
-      </div>
+      </Layout>
     );
   }
 
@@ -60,8 +57,7 @@ const FirebaseProfilePage = () => {
     .slice(0, 2) || 'U';
 
   return (
-    <div className="min-h-screen bg-background">
-      <Navigation />
+    <Layout>
       <div className="container py-8">
         <div className="max-w-4xl mx-auto space-y-6">
           {/* Header */}
@@ -304,8 +300,7 @@ const FirebaseProfilePage = () => {
           </Card>
         </div>
       </div>
-      <Footer />
-    </div>
+    </Layout>
   );
 };
 

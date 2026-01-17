@@ -4,8 +4,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Separator } from '@/components/ui/separator';
-import { Navigation } from '@/components/layout/Navigation';
-import { Footer } from '@/components/layout/Footer';
+import { Layout } from '@/components/layout/Layout';
 
 const ShippingInfoPage = () => {
   const [selectedCountry, setSelectedCountry] = useState('US');
@@ -85,8 +84,7 @@ const ShippingInfoPage = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-background">
-      <Navigation />
+    <Layout>
       {/* Header */}
       <div className="bg-gradient-to-br from-mint-light/30 to-peach-light/30 py-16">
         <div className="container">
@@ -352,8 +350,7 @@ const ShippingInfoPage = () => {
           </div>
         </div>
       </div>
-      <Footer />
-    </div>
+    </Layout>
   );
 };
 

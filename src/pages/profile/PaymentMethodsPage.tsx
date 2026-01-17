@@ -9,8 +9,7 @@ import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Separator } from '@/components/ui/separator';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle } from '@/components/ui/alert-dialog';
-import { Navigation } from '@/components/layout/Navigation';
-import { Footer } from '@/components/layout/Footer';
+import { Layout } from '@/components/layout/Layout';
 
 interface PaymentMethod {
   id: string;
@@ -154,8 +153,7 @@ const PaymentMethodsPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background">
-      <Navigation />
+    <Layout>
       <div className="container py-8">
         <div className="max-w-4xl mx-auto">
           {/* Header */}
@@ -388,8 +386,7 @@ const PaymentMethodsPage = () => {
           </AlertDialog>
         </div>
       </div>
-      <Footer />
-    </div>
+    </Layout>
   );
 };
 
